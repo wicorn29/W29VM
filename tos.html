@@ -131,9 +131,9 @@
 
 <script>
     function agreeToTOS() {
-        alert('You have agreed to the Terms of Service. You will now be redirected to the main site.');
+        alert('You have agreed to the Terms of Service. You will now be redirected back where you came from.');
         // Redirect to main content or home page
-        window.location.href = 'index.html';
+        history.back()
     }
 </script>
 
