@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W29VM - Educational Virtual Machines</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #admin-notes {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        #tos-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 20px;
+            overflow: auto;
+            z-index: 1000;
+        }
+        #tos-content {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        #accept-btn {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #close-btn {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #access-vm-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        #view-full-tos-btn {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            text-align: center;
+            background-color: #008CBA;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Admin Notes (Visible to Admin) -->
+    <div id="admin-notes">
+        <strong>ADMIN NOTE:</strong> This is not an anonymous proxy, nor does it violate the student handbook. This is a service meant solely for allowing students to use educational Windows programs on their school Chromebooks. If students do anything else, their access to this service will be revoked with no questions asked.
+    </div>
+
+    <!-- Terms of Service Popup -->
+    <div id="tos-popup">
+        <div id="tos-content">
+            <h2>Terms of Service (TOS) for W29VM</h2>
+            <p>By accessing or using W29VM (“the Service”), provided by Wicorn29, you agree to be bound by these Terms of Service (“TOS”). If you do not agree to these terms, you are prohibited from using the Service.</p>
+            <p><strong>Eligibility:</strong> The Service is designed specifically for middle to high school students using Chromebooks. By using the Service, you confirm that you are within this age group.</p>
+            <p><strong>Compliance with Educational Policies:</strong> W29VM is strictly intended for educational purposes and complies with school policies and Hapara Dashboard rules. You agree to use the Service only for activities that support educational goals and adhere to the guidelines established by your educational institution.</p>
+            <p><strong>Prohibited Activities:</strong> You agree not to use the Service for piracy, illegal activities, inappropriate content, bypassing restrictions, hacking, academic dishonesty, <strong>GAMING</strong>, and more. A full list of prohibited activities is included in the full TOS.</p>
+            <p><strong>Immediate Termination:</strong> Violations of these TOS will result in the immediate deletion of your virtual machine(s) (“VMs”) without notice and permanent banning from the service.</p>
+            <p><strong>No Appeal:</strong> There is no appeal process for reinstatement once banned for violating these terms.</p>
+            <p><strong>By continuing to use the Service, you acknowledge that you have read, understood, and agree to be bound by these TOS.</strong></p>
+            <button id="accept-btn" onclick="acceptTOS()">I Accept</button>
+            <button id="close-btn" onclick="closeTOS()">Close</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="content" style="display:none;">
+        <h1>Welcome to W29VM</h1>
+        <p>W29VM provides educational virtual machines for middle-high school students using Chromebooks. This service is designed to give students access to educational Windows programs.</p>
+        <p><a href="apply-for-vm.html">Click here to apply for your VM</a></p>
+        
+        <!-- Access my VM link -->
+        <a href="#" id="access-vm-link" onclick="accessVM()">Access my VM</a>
+
+        <!-- View Full TOS button -->
+        <a href="tos.html" id="view-full-tos-btn">View Full TOS</a>
+    </div>
+
+    <script>
+        // Show the TOS popup on page load
+        window.onload = function() {
+            document.getElementById('tos-popup').style.display = 'block';
+        };
+
+        // Accepting TOS and showing main content
+        function acceptTOS() {
+            document.getElementById('tos-popup').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        // Close the TOS without accepting
+        function closeTOS() {
+            alert("You must accept the Terms of Service to continue.");
+        }
+
+        // Function to access VM
+        function accessVM() {
+            // Get the IP address for the site
+            var ip = 'boykisserforum.duckdns.org'; // Replace this with actual IP lookup logic if necessary
+            var url = 'https://' + ip + ':8006';
+
+            // Show a popup before redirecting
+            alert('You must use this tool to launch the portal, as the IP address changes frequently.');
+
+            // Redirect to the VM portal
+            window.location.href = url;
+        }
+    </script>
+
+</body>
+</html>
