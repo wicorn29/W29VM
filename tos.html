@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W29VM - Terms of Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        #tos-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+        #tos-container h1 {
+            margin-top: 0;
+        }
+        #tos-container p, #tos-container ul {
+            margin: 10px 0;
+        }
+        #agree-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+        #agree-btn:hover {
+            background-color: #0056b3;
+        }
+        .warning {
+            font-weight: bold;
+            color: red;
+        }
+        .important-message {
+            font-weight: bold;
+            color: red;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="tos-container">
+    <p class="important-message">**This is not an anonymous proxy, nor does it violate the student handbook. This is a service that is meant for the sole purpose of letting students use educational Windows programs on their school Chromebooks. If students do anything else, their access to this service will be revoked with no questions asked.**</p>
+
+    <h1>Terms of Service (TOS) for W29VM</h1>
+
+    <p>1. <strong>Acceptance of Terms</strong></p>
+    <p>By accessing or using W29VM (“the Service”), provided by Wicorn29, you agree to be bound by these Terms of Service (“TOS”). If you do not agree to these terms, you are prohibited from using the Service.</p>
+
+    <p>2. <strong>Eligibility</strong></p>
+    <p>The Service is designed specifically for middle to high school students using Chromebooks. By using the Service, you confirm that you are within this age group.</p>
+
+    <p>3. <strong>Compliance with Educational Policies</strong></p>
+    <p>W29VM is strictly intended for educational purposes and complies with school policies and Hapara Dashboard rules. You agree to use the Service only for activities that support educational goals and adhere to the guidelines established by your educational institution.</p>
+
+    <p>4. <strong>Encouraged Activities</strong></p>
+    <p>We encourage using W29VM for educational and creative projects, such as:</p>
+    <ul>
+        <li>3D Modeling Software (e.g., Blender, Tinkercad, Fusion 360)</li>
+        <li>Programming and Coding (e.g., Python, Scratch, JavaScript)</li>
+        <li>Learning new digital art and design techniques</li>
+        <li>Exploring educational software and virtual labs</li>
+        <li>Conducting research for school projects and assignments</li>
+        <li>Collaborative learning and group work on educational topics</li>
+    </ul>
+
+    <p><span class="warning">THIS SERVICE MAY NOT BE USED FOR GAMES.</span></p>
+    <p>Any use of the Service for gaming purposes is strictly prohibited and will result in the immediate termination of your virtual machine and permanent banning from the service.</p>
+
+    <p>5. <strong>Prohibited Activities</strong></p>
+    <ul>
+        <li>Piracy: Unauthorized distribution, reproduction, or access to copyrighted content or software.</li>
+        <li>Illegal Activities: Any actions that violate local, state, national, or international laws.</li>
+        <li>Inappropriate Content: Accessing, sharing, or distributing pornographic, violent, hateful, or otherwise inappropriate content.</li>
+        <li>Bypassing Restrictions: Using the Service to circumvent school or institutional internet restrictions or content filters.</li>
+        <li>Hacking and Unauthorized Access: Engaging in hacking, unauthorized access, or any activities intended to compromise system security.</li>
+        <li>Academic Dishonesty: Using the Service to cheat on assignments, exams, or facilitate academic dishonesty.</li>
+        <li>Spamming and Phishing: Sending unsolicited messages or engaging in phishing activities.</li>
+        <li>Harassment and Bullying: Harassing, bullying, or threatening others.</li>
+        <li>Resource Abuse: Excessive use of system resources that disrupts the Service for others.</li>
+        <li>Impersonation: Impersonating any individual or entity or misrepresenting your affiliation.</li>
+    </ul>
+
+    <p>6. <strong>Educational Purpose Requirement</strong></p>
+    <p>The Service is provided for educational use only. Any non-educational use, including entertainment, games, or personal projects, is strictly prohibited.</p>
+
+    <p>7. <strong>Enforcement and Consequences</strong></p>
+    <ul>
+        <li>Immediate Termination: Violations of these TOS will result in the immediate deletion of your virtual machine(s) (“VMs”) without notice.</li>
+        <li>Permanent Ban: Users violating these terms will be permanently banned from the Service.</li>
+        <li>No Appeal: There is no appeal process for reinstatement once banned for violating these terms.</li>
+    </ul>
+
+    <p>8. <strong>Monitoring and Reporting</strong></p>
+    <p>W29VM reserves the right to monitor usage to ensure compliance with these TOS. Violations may be reported to appropriate school authorities or guardians.</p>
+
+    <p>9. <strong>Disclaimer of Liability</strong></p>
+    <p>W29VM and Wicorn29 are not responsible for any data loss, service interruptions, or any consequences resulting from enforcement of these TOS.</p>
+
+    <p>10. <strong>Modifications to Terms</strong></p>
+    <p>W29VM may modify these TOS at any time. Continued use of the Service after changes are made constitutes your acceptance of the updated terms.</p>
+
+    <p>11. <strong>Contact Information</strong></p>
+    <p>For questions or concerns regarding these TOS, please contact Wicorn29 using the support application on your VM.</p>
+
+    <p>**If a school administrator requests a student to not have access to this service, or for the service to be blacklisted, I, the owner, will comply. To submit a request for this purpose, please email <a href="mailto:wilsonharriscorn@gmail.com">wilsonharriscorn@gmail.com</a>.**</p>
+
+    <p>By using the Service, you acknowledge that you have read, understood, and agree to be bound by these TOS.</p>
+
+    <button id="agree-btn" onclick="agreeToTOS()">I Agree</button>
+</div>
+
+<script>
+    function agreeToTOS() {
+        alert('You have agreed to the Terms of Service. You will now be redirected to the main site.');
+        // Redirect to main content or home page
+        window.location.href = 'index.html';
+    }
+</script>
+
+</body>
+</html>
