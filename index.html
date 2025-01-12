@@ -141,17 +141,31 @@
         }
 
         // Function to access VM
-        function accessVM() {
-            // Get the IP address for the site
-            var ip = 'boykisserforum.duckdns.org'; // i know, i know. It was a domain I already owned and now is being reporpused. Don't judge lmao
-            var url = 'https://' + ip + ':8006';
+function accessVM() {
+    var domain = 'boykisserforum.duckdns.org'; // Domain to get the IP for
+    var apiUrl = 'https://dns.google/resolve?name=' + domain + '&type=A'; // Google DNS API for resolving A records
 
-            // Show a popup before redirecting
-            alert('You must use this tool to launch the portal, as the URL to my server address changes frequently.');
+    // Use fetch to get the real IP address
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.Answer && data.Answer[0].data) {
+                var ip = data.Answer[0].data; // Get the real IP address from the API response
+                var url = 'https://' + ip + ':8006';
 
-            // Redirect to the VM portal
-            window.location.href = url;
-        }
+                // Show a popup before redirecting
+                alert('You must use this tool to launch the portal, as the URL to my server address changes frequently.');
+
+                // Redirect to the VM portal
+                window.location.href = url;
+            } else {
+                alert('Could not resolve the IP address for the domain.');
+            }
+        })
+        .catch(error => {
+            alert('Error fetching IP address: ' + error);
+        });
+}
     </script>
 
 </body>
