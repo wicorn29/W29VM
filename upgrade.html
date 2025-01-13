@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VM Upgrade Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .notification {
+            background-color: #ffcc00;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="notification">
+            Prices are steep due to high demand. This is a way to discourage frequent VM upgrades.
+        </div>
+        <div class="notification" id="warning" style="display: none;">
+            You can only upgrade a VM every 10 hours. Please wait before submitting again.
+        </div>
+        <h2>Upgrade Your VM</h2>
+        <form id="upgradeForm">
+            <label for="login">Login Email or Username:</label>
+            <input type="text" id="login" name="login" required>
+
+            <label for="cpu">CPU:</label>
+            <select id="cpu" name="cpu" onchange="calculateCost()">
+                <option value="1">1 vCPU (Default)</option>
+                <option value="2">2 vCPUs</option>
+                <option value="4">4 vCPUs</option>
+                <option value="6">6 vCPUs</option>
+                <option value="8">8 vCPUs</option>
+                <option value="10">10 vCPUs</option>
+            </select>
+
+            <label for="ram">RAM:</label>
+            <select id="ram" name="ram" onchange="calculateCost()">
+                <option value="2">2 GB (Default)</option>
+                <option value="4">4 GB</option>
+                <option value="8">8 GB</option>
+                <option value="12">12 GB</option>
+                <option value="16">16 GB</option>
+            </select>
+
+            <label for="storage">Storage (32-128 GB):</label>
+            <input type="number" id="storage" name="storage" value="32" min="32" max="128" onchange="calculateCost()">
+
+            <label for="network">Network Cap:</label>
+            <input type="text" id="network" name="network" value="Unlimited" disabled>
+
+            <label for="display">Display:</label>
+            <input type="text" id="display" name="display" value="QXL (Default for SPICE)" disabled>
+
+            <p id="costDisplay">Total Cost: $0</p>
+
+            <button type="button" onclick="submitUpgrade()">Submit Upgrade</button>
+        </form>
+    </div>
+
+    <script>
+        function calculateCost() {
+            var cpu = document.getElementById('cpu').value;
+            var ram = document.getElementById('ram').value;
+            var storage = document.getElementById('storage').value;
+
+            var cost = 0;
+
+            // Cost calculation logic
+            cost += (cpu - 1) * 5;   // $5 per additional vCPU
+            cost += (ram - 2) * 10;  // $10 per additional GB of RAM
+            cost += (storage - 32) * 0.5; // $0.50 per additional GB of storage
+
+            // Display the total cost
+            document.getElementById('costDisplay').innerText = 'Total Cost: $' + cost.toFixed(2);
+            return cost;
+        }
+
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
+        }
+
+        function setCookie(name, value, hours) {
+            var date = new Date();
+            date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+            document.cookie = name + "=" + value + "; expires=" + date.toUTCString() + "; path=/";
+        }
+
+        function submitUpgrade() {
+            var lastUpgradeTime = getCookie('lastUpgradeTime');
+            var now = new Date().getTime();
+
+            if (lastUpgradeTime && now - lastUpgradeTime < 10 * 60 * 60 * 1000) {
+                document.getElementById('warning').style.display = 'block';
+                return;
+            }
+
+            var form = document.getElementById('upgradeForm');
+            var formData = new FormData(form);
+            var specs = {};
+            formData.forEach((value, key) => {
+                specs[key] = value;
+            });
+
+            var cost = calculateCost(); // Ensure cost is recalculated before submission
+
+            var message = {
+                content: `VM Upgrade Request Submitted:\n\`\`\`json\n${JSON.stringify(specs, null, 2)}\n\`\`\`\nTotal Cost: $${cost.toFixed(2)}`
+            };
+
+            fetch('https://discord.com/api/webhooks/1328188954230394930/igyrGv3sKVT3EyYOkcII7b_CnOcz_dVYk330VoMGVpA4VeNFbtj5MckAKLHh6uqXFQtR', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(message)
+            })
+            .then(response => {
+                if (response.ok) {
+                    setCookie('lastUpgradeTime', now, 10);
+                    alert('Upgrade request submitted successfully!');
+                    history.back(); // Go back in history
+                } else {
+                    alert('Failed to submit the upgrade request.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the upgrade request.');
+            });
+        }
+    </script>
+</body>
+</html>
