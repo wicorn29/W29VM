@@ -53,7 +53,7 @@
 <body>
     <div class="container">
         <div class="notification">
-            Prices are steep due to high demand. This is a way to discourage frequent VM upgrades.
+            Upgrading your VM has never been more affordable.
         </div>
         <div class="notification" id="warning" style="display: none;">
             You can only upgrade a VM every 10 hours. Please wait before submitting again.
@@ -108,7 +108,7 @@
             // Cost calculation logic
             cost += (cpu - 1) * 5;   // $5 per additional vCPU
             cost += (ram - 2) * 10;  // $10 per additional GB of RAM
-            cost += (storage - 32) * 0.05; // $0.05 per additional GB of storage
+            cost += (storage - 32) * 0.10; // $0.05 per additional GB of storage
 
             // Display the total cost
             document.getElementById('costDisplay').innerText = 'Total Cost: $' + cost.toFixed(2);
