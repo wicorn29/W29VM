@@ -1,3 +1,6 @@
+# W29VM IS ANTIQUATED! ALL YOU HAVE TO DO NOW IS GO TO "serve.wicorn29.net:8006" 
+
+
 # W29VM
 
 W29VM is a Virtual Machine (VM) service designed specifically for middle to high school students using Chromebooks. It allows students to run educational Windows programs on their devices, enabling them to access software that may not be available on their school-issued Chromebooks. This service is intended solely for educational purposes and adheres to the rules and guidelines established by educational institutions.
